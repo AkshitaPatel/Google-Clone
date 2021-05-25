@@ -15,12 +15,12 @@ import  MoreVertIcon  from "@material-ui/icons/MoreVert";
 
 function SearchPage() {
     const [{term="tesla"}, dispatch] = useStateValue();
-    
+
     // mock api call
     // const data = Response;
 
     //LIVE API CALL
-    const { data } = useGoogleSearch(term); 
+    const { data } = useGoogleSearch(term);
 
     console.log(data);
 
@@ -28,7 +28,7 @@ function SearchPage() {
         <div className="searchPage">
             <div className="searchPage__header">
                 <Link to="/">
-                <img className="searchPage__logo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
+                <img className="searchPage__logo" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
                 alt="" />
 
                 </Link>
@@ -65,27 +65,25 @@ function SearchPage() {
                         </div>
                         <div className="searchPage__optionsRight">
                         <div className="searchPage__option">
-                                
+
                                 <Link to="/settings">Settings</Link>
                             </div>
                             <div className="searchPage__option">
-                                
+
                                 <Link to="/tools">Tools</Link>
                             </div>
                         </div>
                         </div>
                     </div>
-
                 </div>
 
                 {term && (
                     <div className="searchPage__results">
 
                         <p className="searchPage__resultCount">
-                           About {data?.searchInformation.formattedTotalResults} results 
+                           About {data?.searchInformation.formattedTotalResults} results
                             ({data?.searchInformation.formattedSearchTime}) seconds for {term}
                         </p>
-
                         {data?.items.map(item => (
                             <div className="searchPage__result">
                                 <a href={item.link}>
@@ -107,20 +105,11 @@ function SearchPage() {
                                 <p className="searchPage__resultSnippet">
                                     {item.snippet}
                                 </p>
-                                
                                 </div>
-
                         ))}
-
-                    </div>   
-
+                    </div>
                 )}
-
-             
             </div>
-
     )
-    
 }
-
 export default SearchPage;
